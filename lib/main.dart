@@ -69,25 +69,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         drawer: Drawer(
-          backgroundColor: Colors.white,
+          //backgroundColor: Colors.white,
           child: ListView(
             children: [
-              const DrawerHeader(
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  'Sasha Dokanin',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                accountEmail: Text('+7(950)-228-13-37'),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('src/avatars/13.jpg'),
+                ),
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 20, 121, 222),
-                ),
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Icon(Icons.person_2),
-                        Text('Sasha dokan',
-                            style: TextStyle(color: Colors.white)),
-                        Text('+7 (913) 228-13-37',
-                            style: TextStyle(color: Colors.white)),
-                      ],
-                    ),
-                  ],
                 ),
               ),
               ListTile(
@@ -172,10 +167,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     return ListTile(
                       leading: setAvatar(users[index]),
                       title: Text(
+                        overflow: TextOverflow.ellipsis,
                         users[index].userName.toString(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      subtitle: Text(users[index].lastMessage.toString()),
+                      subtitle: Text(users[index].lastMessage.toString(),
+                          overflow: TextOverflow.ellipsis),
                       onTap: () {},
                       trailing: setTrail(users[index]),
                     );
